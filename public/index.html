@@ -1,9 +1,50 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>Volna</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wavo</title>
+<style>
+body{font-family:system-ui,sans-serif;max-width:640px;margin:0 auto;padding:16px;line-height:1.4}
+section{border:1px solid #ccc;border-radius:12px;padding:12px;margin:12px 0}
+input,button,.btn{font:inherit;padding:8px 10px}
+input{margin:4px 0;width:100%;box-sizing:border-box}
+.btn{display:inline-block;border:1px solid #888;border-radius:6px;text-decoration:none;color:inherit}
+li{margin:6px 0}.mu{color:#777;font-size:13px}.err{color:#c00}
+</style>
 </head>
 <body>
+<h1>Wavo</h1>
+
+<div id="auth" hidden>
+  <section>
+    <div><button id="tabReg">Регистрация</button> <button id="tabLogin">Вход</button></div>
+    <form id="regForm">
+      <p class="mu">Придумайте юзернейм: по нему вас будут находить друзья. Дальше откроется Telegram-бот, куда уйдёт заявка. После одобрения вы войдёте автоматически.</p>
+      <input id="ru" placeholder="юзернейм (латиница, цифры, _)" autocomplete="off" maxlength="20" required>
+      <input id="rd" placeholder="имя для друзей (необязательно)" autocomplete="off" maxlength="40">
+      <button>Зарегистрироваться</button>
+    </form>
+    <form id="loginForm" hidden>
+      <p class="mu">Введите юзернейм. Вход подтверждается одной кнопкой в Telegram-боте.</p>
+      <input id="lu" placeholder="юзернейм" autocomplete="off" maxlength="20" required>
+      <button>Войти через Telegram</button>
+    </form>
+    <p id="err" class="err"></p>
+    <div id="botbox" hidden>
+      <a id="botlink" class="btn" target="_blank" rel="noopener">Открыть Telegram-бота</a>
+      <p id="state" class="mu"></p>
+    </div>
+  </section>
+</div>
+
+<div id="app" hidden>
+  <section><b id="who"></b> <button id="logout">Выйти</button></section>
+  <section><h2>Найти друзей по юзернейму</h2>
+    <input id="q" placeholder="юзернейм" autocomplete="off" maxlength="20"><ul id="results"></ul></section>
+  <section><h2>Заявки в друзья</h2><ul id="reqs"></ul></section>
+  <section><h2>Друзья</h2><ul id="friends"></ul></section>
+</div>
+<script src="app.js" defer></script>
 </body>
 </html>
